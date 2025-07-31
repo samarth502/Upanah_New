@@ -41,8 +41,8 @@ const items = imageData.map((img, index) => (
 ));
 
 const MainCarousel = () => (
-    <div className="flex justify-center items-center  bg-gray-100 p-4">
-        <div className="w-full max-w-9xl bg-white rounded-xl shadow-2xl overflow-hidden p-6">
+    <div className="flex justify-center items-center  bg-gray-100 p-2">
+        <div className="w-full  bg-white rounded-xl shadow-2xl overflow-hidden p-6">
             {/* <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Our Featured Images</h2> */}
             <AliceCarousel
                 mouseTracking
