@@ -1,5 +1,7 @@
 import React from 'react'
-import MainCaursel from '../Components/HomeCarsouel/MainCaursel'
+import MainCaursel from '../Components/HomeCursoual/MainCaursel'
+import HomeCardSection from '../Components/HomeSectionCard.jsx/HomeSectionCard'
+import HomeSectionCursoual from '../Components/HomeSectionCursoual/HomeSectionCursoual'
 
 const HomePages = () => {
   return (
@@ -8,7 +10,7 @@ const HomePages = () => {
         <MainCaursel/>
 
         <div>
-            other section
+            <HomeSectionCursoual/>
         </div>
       
     </div>
