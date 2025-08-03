@@ -4,15 +4,14 @@ const HomeCardSection = ({ product }) => {
   return (
     <motion.div
       className="flex flex-col m-2 p-5 bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden cursor-pointer"
-      initial={{ y: 50, opacity: 0 }} // Initial animation state
-      animate={{ y: 0, opacity: 1 }} // Animation when component mounts
+    
       whileHover={{ scale: 1.05 }} // Animation on hover
       transition={{ type: "spring", stiffness: 300, damping: 20 }} // Smooth transition
-    >
-      <img
+    >                                                                                                             
+      <img                                                                                                                                                                                                                                                                                                                   
         src={product.imageUrl}
         alt={`${product.brand} ${product.name}`}
-        className="w-full h-48 object-cover rounded-xl mb-4"
+        className="w-full h-48 object-cover rounded-xl mb-4"                               
         onError={(e) => {
           e.target.src = 'https://placehold.co/400x250/EAEAEA/000000?text=Image+Unavailable';
         }}

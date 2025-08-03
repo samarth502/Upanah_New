@@ -45,16 +45,16 @@ const MainCarousel = () => (
         <div className="w-full  bg-white rounded-xl shadow-2xl overflow-hidden p-1">
             {/* <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Our Featured Images</h2> */}
             <AliceCarousel
-                mouseTracking
+                
                 items={items}
                 responsive={responsive}
                 controlsStrategy="alternate"
                 disableDotsControls={false} // Show pagination dots
-                disableButtonsControls={false} // Show navigation buttons
+                disableButtonsControls={false} // Show navigation buttons z
                 autoPlay={true} // Enable auto-play
-                autoPlayInterval={1000} // Set auto-play interval to 3 seconds
+                autoPlayInterval={3000} // Set auto-play interval to 3 seconds
                 infinite={true} // Loop the carousel infinitely
-                animationDuration={800} // Smooth animation duration
+                animationDuration={500} // Smooth animation duration z
                 // Custom navigation buttons for a nicer look
                 renderPrevButton={() => (
                     <button className="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-800 bg-opacity-50 hover:bg-opacity-75 text-white p-3 rounded-full shadow-lg z-10 ml-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75">
