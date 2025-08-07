@@ -4,6 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Navigations from './Customer/Components/Navigations'
 import HomePages from './Customer/Pages/HomePages'
+import Product from './Customer/Components/Product/Product'
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,7 +14,9 @@ function App() {
     <>
     <Navigations/>
     <div>
-      <HomePages/>
+      {/* <HomePages/> */}
+      
+      <Product/>
     </div>
     </>
   )

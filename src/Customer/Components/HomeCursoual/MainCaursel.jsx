@@ -1,6 +1,11 @@
 import React from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css'; // Ensure this is imported for basic carousel styles
+import bannerImage1 from '../../../assets/BannerImages/1877.jpg';
+import bannerImage2 from '../../../assets/BannerImages/becfaaac-3067-4b53-ae98-69fdae9303da.jpg';
+import bannerImage3 from '../../../assets/BannerImages/Black-Friday_web_banner_12.jpg';
+
+
 
 // Tailwind CSS is assumed to be available in the environment.
 // No direct import needed for Tailwind classes.
@@ -14,10 +19,10 @@ const responsive = {
 // Array of image data (using placeholder images for demonstration)
 // You can replace these URLs with your actual image URLs.
 const imageData = [
-    { src: '/1877.jpg', alt: 'Placeholder Image 1', value: '1' },
-    { src: '/becfaaac-3067-4b53-ae98-69fdae9303da.jpg', alt: 'Placeholder Image 2', value: '2' },
-    { src: '/Black-Friday_web_banner_12.jpg', alt: 'Placeholder Image 3', value: '3' },
-   
+    
+     { src: bannerImage1, alt: 'Placeholder Image 1', value: '1' },
+  { src: bannerImage2, alt: 'Placeholder Image 2', value: '2' },
+  { src: bannerImage3, alt: 'Placeholder Image 3', value: '3' },
 ];
 
 const items = imageData.map((img, index) => (

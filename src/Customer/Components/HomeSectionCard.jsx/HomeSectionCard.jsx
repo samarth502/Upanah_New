@@ -10,6 +10,7 @@ const HomeCardSection = ({ product }) => {
     >                                                                                                             
       <img                                                                                                                                                                                                                                                                                                                   
         src={product.imageUrl}
+         loading="lazy"
         alt={`${product.brand} ${product.name}`}
         className="w-full h-48 object-cover rounded-xl mb-4"                               
         onError={(e) => {
