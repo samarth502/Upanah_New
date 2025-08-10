@@ -1,11 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 /**
  * Renders a stylish product card with hard-coded data.
  */
 const ProductCard = ({product}) => {
+  const navigate = useNavigate();
+
   return (
     <div
+    onClick={()=>navigate(`/product/${3}`)}
       className="m-2 p-4 bg-white rounded-2xl shadow-lg transition-all duration-300 overflow-hidden cursor-pointer flex flex-col justify-between h-full w-64"
     >
       <div className="relative overflow-hidden rounded-xl mb-4">

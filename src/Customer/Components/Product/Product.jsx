@@ -40,11 +40,6 @@ function classNames(...classes) {
 }
 
 
-
-
-
-
-
 export default function Product() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 

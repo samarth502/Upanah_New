@@ -15,7 +15,11 @@ import {
   TabPanel,
   TabPanels,
 } from '@headlessui/react'
-import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, UserIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useNavigate } from 'react-router-dom'
+
+
+
 
 const navigation = {
   categories: [
@@ -26,13 +30,13 @@ const navigation = {
         {
           name: 'New Arrivals',
           href: '#',
-          imageSrc: 'https://placehold.co/300x200/ADD8E6/000000?text=New+Shoes', // Placeholder for new shoes
+          imageSrc: 'https://placehold.co/300x200/ADD8E6/000000?text=New+Shoes',
           imageAlt: 'Stylish new sneakers on display.',
         },
         {
           name: 'Best Sellers',
           href: '#',
-          imageSrc: 'https://placehold.co/300x200/90EE90/000000?text=Popular+Footwear', // Placeholder for best-selling footwear
+          imageSrc: 'https://placehold.co/300x200/90EE90/000000?text=Popular+Footwear',
           imageAlt: 'Collection of popular formal shoes and casual sneakers.',
         },
       ],
@@ -41,38 +45,38 @@ const navigation = {
           id: 'shoes-types',
           name: 'Shoes Types',
           items: [
-            { name: 'Sports', href: '#' },
-            { name: 'Formal', href: '#' },
-            { name: 'Bellies / Loafers', href: '#' },
-            { name: 'Flats', href: '#' },
-            { name: 'Heel', href: '#' },
-            { name: 'Party', href: '#' },
-            { name: 'Sandals', href: '#' },
-            { name: 'Slippers', href: '#' },
-            { name: 'All Footwear', href: '#' },
+            { name: 'Sports', id: 'sports' },
+            { name: 'Formal', id: 'formal' },
+            { name: 'Bellies / Loafers', id: 'bellies-loafers' },
+            { name: 'Flats', id: 'flats' },
+            { name: 'Heel', id: 'heel' },
+            { name: 'Party', id: 'party' },
+            { name: 'Sandals', id: 'sandals' },
+            { name: 'Slippers', id: 'slippers' },
+            { name: 'All Footwear', id: 'all-footwear' },
           ],
         },
         {
           id: 'brands',
           name: 'Brands',
           items: [
-            { name: 'Nike', href: '#' },
-            { name: 'Adidas', href: '#' },
-            { name: 'Puma', href: '#' },
-            { name: 'Bata', href: '#' },
-            { name: 'Crocs', href: '#' },
-            { name: 'Woodland', href: '#' },
+            { name: 'Nike', id: 'nike' },
+            { name: 'Adidas', id: 'adidas' },
+            { name: 'Puma', id: 'puma' },
+            { name: 'Bata', id: 'bata' },
+            { name: 'Crocs', id: 'crocs' },
+            { name: 'Woodland', id: 'woodland' },
           ],
         },
         {
           id: 'collections',
           name: 'Collections',
           items: [
-            { name: 'Running Shoes', href: '#' },
-            { name: 'Casual Wear', href: '#' },
-            { name: 'Winter Boots', href: '#' },
-            { name: 'Summer Sandals', href: '#' },
-            { name: 'Kids Footwear', href: '#' },
+            { name: 'Running Shoes', id: 'running-shoes' },
+            { name: 'Casual Wear', id: 'casual-wear' },
+            { name: 'Winter Boots', id: 'winter-boots' },
+            { name: 'Summer Sandals', id: 'summer-sandals' },
+            { name: 'Kids Footwear', id: 'kids-footwear' },
           ],
         },
       ],
@@ -84,13 +88,13 @@ const navigation = {
         {
           name: 'Shoe Care Kits',
           href: '#',
-          imageSrc: 'https://placehold.co/300x200/DDA0DD/000000?text=Shoe+Care', // Placeholder for shoe care
+          imageSrc: 'https://placehold.co/300x200/DDA0DD/000000?text=Shoe+Care',
           imageAlt: 'Various shoe cleaning and polishing products.',
         },
         {
           name: 'Socks & Insoles',
           href: '#',
-          imageSrc: 'https://placehold.co/300x200/FFD700/000000?text=Socks+Insoles', // Placeholder for socks and insoles
+          imageSrc: 'https://placehold.co/300x200/FFD700/000000?text=Socks+Insoles',
           imageAlt: 'Comfortable socks and orthopedic insoles.',
         },
       ],
@@ -99,20 +103,20 @@ const navigation = {
           id: 'shoe-accessories',
           name: 'Shoe Accessories',
           items: [
-            { name: 'Socks', href: '#' },
-            { name: 'Insoles', href: '#' },
-            { name: 'Shoe Laces', href: '#' },
-            { name: 'Shoe Polish', href: '#' },
-            { name: 'Shoe Horns', href: '#' },
+            { name: 'Socks', id: 'socks' },
+            { name: 'Insoles', id: 'insoles' },
+            { name: 'Shoe Laces', id: 'shoe-laces' },
+            { name: 'Shoe Polish', id: 'shoe-polish' },
+            { name: 'Shoe Horns', id: 'shoe-horns' },
           ],
         },
         {
           id: 'other-accessories',
           name: 'Other Accessories',
           items: [
-            { name: 'Bags', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Belts', href: '#' },
+            { name: 'Bags', id: 'bags' },
+            { name: 'Wallets', id: 'wallets' },
+            { name: 'Belts', id: 'belts' },
           ],
         },
       ],
@@ -129,11 +133,52 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
- function Navigations() {
+export default function Navigations() {
   const [open, setOpen] = useState(false)
+  const navigate = useNavigate()
+
+
+
+
+    const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+
+    const handleProfileClick = () => {
+        setIsProfileDropdownOpen(!isProfileDropdownOpen);
+    };
+
+    const handleLogout = () => {
+        // Implement your logout logic here
+        console.log("User logged out");
+        // Example: navigate('/login');
+    };
+
+    const handleMyOrdersClick = () => {
+        // Navigate to the user's orders page
+        navigate('/account/order');
+        setIsProfileDropdownOpen(false);
+    };
+
+    const handleProfilePageClick = () => {
+        // Navigate to the user's profile page
+        navigate('/profile');
+        setIsProfileDropdownOpen(false);
+    };
+  // The 'close' function is now optional, as we handle mobile separately.
+  const handleCategoryClicked = (category, section, item, close = () => {}) => {
+    console.log(category.id, section, item, "Navigation click");
+    // Ensure item has an ID before navigating
+    if (item.id) {
+      navigate(`/${category.id}/${section.id}/${item.id}`);
+    } else {
+      // Fallback for items without IDs, e.g., using item.name
+      navigate(`/${category.id}/${section.id}/${item.name.toLowerCase().replace(/\s+/g, '-')}`);
+    }
+    
+    close(); // Close the popover (desktop) or dialog (mobile)
+  };
 
   return (
-    <div className="bg-white font-inter"> {/* Added font-inter for consistent font */}
+    <div className="bg-white font-inter">
       {/* Mobile menu */}
       <Dialog open={open} onClose={setOpen} className="relative z-40 lg:hidden">
         <DialogBackdrop
@@ -157,7 +202,7 @@ function classNames(...classes) {
               </button>
             </div>
 
-            {/* Links */}
+            {/* Links for mobile */}
             <TabGroup className="mt-2">
               <div className="border-b border-gray-200">
                 <TabList className="-mb-px flex space-x-8 px-4">
@@ -181,7 +226,7 @@ function classNames(...classes) {
                             alt={item.imageAlt}
                             src={item.imageSrc}
                             className="aspect-square w-full rounded-lg bg-gray-100 object-cover group-hover:opacity-75"
-                            onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/300x200/CCCCCC/000000?text=Image+Error"; }} // Fallback
+                            onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/300x200/CCCCCC/000000?text=Image+Error"; }}
                           />
                           <a href={item.href} className="mt-6 block font-medium text-gray-900">
                             <span aria-hidden="true" className="absolute inset-0 z-10" />
@@ -205,7 +250,14 @@ function classNames(...classes) {
                         >
                           {section.items.map((item) => (
                             <li key={item.name} className="flow-root">
-                              <a href={item.href} className="-m-2 block p-2 text-gray-500">
+                              <a 
+                                href={item.href} 
+                                onClick={() => {
+                                    handleCategoryClicked(category, section, item);
+                                    setOpen(false); // Close the mobile menu after clicking
+                                }}
+                                className="-m-2 block p-2 text-gray-500"
+                              >
                                 {item.name}
                               </a>
                             </li>
@@ -228,30 +280,9 @@ function classNames(...classes) {
               ))}
             </div>
 
-            <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-              <div className="flow-root">
-                <a href="#" className="-m-2 block p-2 font-medium text-gray-900">
-                  Sign in
-                </a>
-              </div>
-              <div className="flow-root">
-                <a href="#" className="-m-2 block p-2 font-medium text-gray-900">
-                  Create account
-                </a>
-              </div>
-            </div>
+        
 
-            <div className="border-t border-gray-200 px-4 py-6">
-              <a href="#" className="-m-2 flex items-center p-2">
-                <img
-                  alt=""
-                  src="https://tailwindcss.com/plus-assets/img/flags/flag-canada.svg"
-                  className="block h-auto w-5 shrink-0"
-                />
-                <span className="ml-3 block text-base font-medium text-gray-900">CAD</span>
-                <span className="sr-only">, change currency</span>
-              </a>
-            </div>
+          
           </DialogPanel>
         </div>
       </Dialog>
@@ -274,16 +305,17 @@ function classNames(...classes) {
                 <Bars3Icon aria-hidden="true" className="size-6" />
               </button>
 
-             {/* Logo */}
+              {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
                 <a href="#" className="flex items-center">
                   <span className="sr-only">Your Company</span>
                   <img
+                    onClick={()=>navigate('/')}
                     alt="Company Logo"
                     src="https://upanah.com/wp-content/uploads/2024/10/Upanah-Logo.png"
-                    className="h-14 w-14 rounded-full object-cover ring-2 ring-indigo-500 ring-offset-2" // Enhanced logo styling
+                    className="h-14 w-14 rounded-full object-cover ring-2 ring-indigo-500 ring-offset-2"
                   />
-                  <span className="ml-2 text-2xl font-extrabold text-gray-900 tracking-tight">FootLux</span> {/* Brand Name */}
+                  <span className="ml-2 text-2xl font-extrabold text-gray-900 tracking-tight">FootLux</span>
                 </a>
               </div>
 
@@ -305,55 +337,63 @@ function classNames(...classes) {
                         transition
                         className="absolute inset-x-0 top-full z-20 w-full bg-white text-sm text-gray-500 transition data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
                       >
-                        {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
-                        <div aria-hidden="true" className="absolute inset-0 top-1/2 bg-white shadow-sm" />
-                        <div className="relative bg-white">
-                          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                            <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
-                              <div className="col-start-2 grid grid-cols-2 gap-x-8">
-                                {category.featured.map((item) => (
-                                  <div key={item.name} className="group relative text-base sm:text-sm">
-                                    <img
-                                      alt={item.imageAlt}
-                                      src={item.imageSrc}
-                                      className="aspect-square w-full rounded-lg bg-gray-100 object-cover group-hover:opacity-75"
-                                      onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/300x200/CCCCCC/000000?text=Image+Error"; }} // Fallback
-                                    />
-                                    <a href={item.href} className="mt-6 block font-medium text-gray-900">
-                                      <span aria-hidden="true" className="absolute inset-0 z-10" />
-                                      {item.name}
-                                    </a>
-                                    <p aria-hidden="true" className="mt-1">
-                                      Shop now
-                                    </p>
-                                  </div>
-                                ))}
-                              </div>
-                              <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
-                                {category.sections.map((section) => (
-                                  <div key={section.name}>
-                                    <p id={`${section.name}-heading`} className="font-medium text-gray-900">
-                                      {section.name}
-                                    </p>
-                                    <ul
-                                      role="list"
-                                      aria-labelledby={`${section.name}-heading`}
-                                      className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-                                    >
-                                      {section.items.map((item) => (
-                                        <li key={item.name} className="flex">
-                                          <a href={item.href} className="hover:text-gray-800">
-                                            {item.name}
-                                          </a>
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                        {/* The PopoverPanel child must be a function that receives the state, including `close` */}
+                        {({ close }) => (
+                            <>
+                                <div aria-hidden="true" className="absolute inset-0 top-1/2 bg-white shadow-sm" />
+                                <div className="relative bg-white">
+                                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                                        <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
+                                            <div className="col-start-2 grid grid-cols-2 gap-x-8">
+                                                {category.featured.map((item) => (
+                                                    <div key={item.name} className="group relative text-base sm:text-sm">
+                                                        <img
+                                                            alt={item.imageAlt}
+                                                            src={item.imageSrc}
+                                                            className="aspect-square w-full rounded-lg bg-gray-100 object-cover group-hover:opacity-75"
+                                                            onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/300x200/CCCCCC/000000?text=Image+Error"; }}
+                                                        />
+                                                        <a href={item.href} className="mt-6 block font-medium text-gray-900">
+                                                            <span aria-hidden="true" className="absolute inset-0 z-10" />
+                                                            {item.name}
+                                                        </a>
+                                                        <p aria-hidden="true" className="mt-1">
+                                                            Shop now
+                                                        </p>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
+                                                {category.sections.map((section) => (
+                                                    <div key={section.name}>
+                                                        <p id={`${section.name}-heading`} className="font-medium text-gray-900">
+                                                            {section.name}
+                                                        </p>
+                                                        <ul
+                                                            role="list"
+                                                            aria-labelledby={`${section.name}-heading`}
+                                                            className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
+                                                        >
+                                                            {section.items.map((item) => (
+                                                                <li key={item.name} className="flex">
+                                                                    <a 
+                                                                        href={item.href} 
+                                                                        className="hover:text-gray-800"
+                                                                        onClick={() => handleCategoryClicked(category, section, item, close)}
+                                                                    >
+                                                                        {item.name}
+                                                                    </a>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </>
+                        )}
                       </PopoverPanel>
                     </Popover>
                   ))}
@@ -370,48 +410,68 @@ function classNames(...classes) {
               </PopoverGroup>
 
               <div className="ml-auto flex items-center">
-                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                    Sign in
-                  </a>
-                  <span aria-hidden="true" className="h-6 w-px bg-gray-200" />
-                  <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                    Create account
-                  </a>
-                </div>
+            {/* ... Other parts of your navigation bar ... */}
 
-                <div className="hidden lg:ml-8 lg:flex">
-                  <a href="#" className="flex items-center text-gray-700 hover:text-gray-800">
-                    <img
-                      alt="Flag"
-                      src="https://tailwindcss.com/plus-assets/img/flags/flag-canada.svg"
-                      className="block h-auto w-5 shrink-0"
-                    />
-                    <span className="ml-3 block text-sm font-medium">CAD</span>
-                    <span className="sr-only">, change currency</span>
-                  </a>
-                </div>
-
-                {/* Search */}
-                <div className="flex lg:ml-6">
-                  <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
+            {/* Search */}
+            <div className="flex lg:ml-6">
+                <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
                     <span className="sr-only">Search</span>
                     <MagnifyingGlassIcon aria-hidden="true" className="size-6" />
-                  </a>
-                </div>
+                </a>
+            </div>
 
-                {/* Cart */}
-                <div className="ml-4 flow-root lg:ml-6">
-                  <a href="#" className="group -m-2 flex items-center p-2">
+            {/* Profile Icon with Dropdown */}
+            <div className="relative">
+                <button
+                    onClick={handleProfileClick}
+                    className="p-2 text-gray-400 hover:text-gray-500 focus:outline-none"
+                >
+                    <span className="sr-only">User Profile</span>
+                    <UserIcon className="size-6" aria-hidden="true" />
+                </button>
+
+                {/* Dropdown Menu */}
+                {isProfileDropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
+                        <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button">
+                            <button
+                                onClick={handleProfilePageClick}
+                                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                role="menuitem"
+                            >
+                                Profile
+                            </button>
+                            <button
+                                onClick={handleMyOrdersClick}
+                                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                role="menuitem"
+                            >
+                                My Orders
+                            </button>
+                            <button
+                                onClick={handleLogout}
+                                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                role="menuitem"
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                )}
+            </div>
+
+            {/* Cart */}
+            <div className="ml-4 flow-root lg:ml-6">
+                <a href="#" className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
-                      aria-hidden="true"
-                      className="size-6 shrink-0 text-gray-400 group-hover:text-gray-500"
+                        aria-hidden="true"
+                        className="size-6 shrink-0 text-gray-400 group-hover:text-gray-500"
                     />
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
                     <span className="sr-only">items in cart, view bag</span>
-                  </a>
-                </div>
-              </div>
+                </a>
+            </div>
+        </div>
             </div>
           </div>
         </nav>
@@ -419,5 +479,3 @@ function classNames(...classes) {
     </div>
   )
 }
-
-export default Navigations;
