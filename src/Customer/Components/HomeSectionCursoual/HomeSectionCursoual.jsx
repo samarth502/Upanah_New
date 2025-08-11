@@ -1,5 +1,6 @@
 import AliceCarousel from "react-alice-carousel";
 import HomeCardSection from "../HomeSectionCard.jsx/HomeSectionCard";
+import { useNavigate } from "react-router-dom";
 
 const HomeSectionCursoual = ({ data,sectionName}) => {
   // const items = Nike_shoes.map((shoe) => (
@@ -8,6 +9,8 @@ const HomeSectionCursoual = ({ data,sectionName}) => {
   //   </div>
   // ));
 
+
+  const navigate = useNavigate();
 
 
   const items = data.slice(0,10).map((item)=><HomeCardSection product={item}/>)
@@ -19,7 +22,7 @@ const HomeSectionCursoual = ({ data,sectionName}) => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-gray-200 flex flex-col justify-center items-center py-5 px-4 sm:px-6 lg:px-8 font-sans">
+    <div onClick={()=> navigate(`/product/${7}`)} className="bg-gradient-to-br from-gray-50 to-gray-200 flex flex-col justify-center items-center py-5 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="w-full mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800 tracking-wide uppercase mb-1">
          {sectionName}

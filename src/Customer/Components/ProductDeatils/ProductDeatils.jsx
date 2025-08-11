@@ -280,6 +280,9 @@ import HelpOutline from "@mui/icons-material/HelpOutline";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import { useNavigate } from "react-router-dom";
 
+import img1 from '../../../assets/mensImages/fashion-shoes-sneakers.jpg'
+
+
 const product = {
   name: "StrideMax Pro Running Shoes",
   price: "₹4,299",
@@ -293,19 +296,19 @@ const product = {
   ],
   images: [
     {
-      src: "https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-02-featured-product-shot.jpg",
+      src: "https://rukminim2.flixcart.com/image/832/832/xif0q/shoe/g/o/z/9-6202015156-9-liberty-t-blue-original-imah4zgkvfhthzwx.jpeg?q=70&crop=false",
       alt: "Front angle of the shoe in white/black.",
     },
     {
-      src: "https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg",
+      src:"https://rukminim2.flixcart.com/image/832/832/xif0q/shoe/m/p/g/9-6202015156-9-liberty-t-blue-original-imah4zgkkvmgaakn.jpeg?q=70&crop=false",
       alt: "Side profile of the shoe.",
     },
     {
-      src: "https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg",
+      src: "https://rukminim2.flixcart.com/image/832/832/xif0q/shoe/t/l/v/9-6202015156-9-liberty-t-blue-original-imah4zgkye6u7whh.jpeg?q=70&crop=false",
       alt: "Top view showing laces.",
     },
     {
-      src: "https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-02-secondary-product-shot.jpg",
+      src: "https://rukminim2.flixcart.com/image/832/832/xif0q/shoe/g/o/z/9-6202015156-9-liberty-t-blue-original-imah4zgkvfhthzwx.jpeg?q=70&crop=false",
       alt: "Outsole tread pattern.",
     },
   ],
